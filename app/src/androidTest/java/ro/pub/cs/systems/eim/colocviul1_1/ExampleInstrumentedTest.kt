@@ -1,4 +1,4 @@
-package ro.pub.cs.systems.eim.Colocviul1_1
+package ro.pub.cs.systems.eim.colocviul1_1
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

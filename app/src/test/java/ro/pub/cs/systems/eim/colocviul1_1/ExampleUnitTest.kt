@@ -1,4 +1,4 @@
-package ro.pub.cs.systems.eim.Colocviul1_1
+package ro.pub.cs.systems.eim.colocviul1_1
 
 import org.junit.Test
 

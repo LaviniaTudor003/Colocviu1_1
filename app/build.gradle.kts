@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "ro.pub.cs.systems.eim.Colocviul1_1"
+    namespace = "ro.pub.cs.systems.eim.colocviul1_1"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "ro.pub.cs.systems.eim.Colocviul1_1"
+        applicationId = "ro.pub.cs.systems.eim.colocviul1_1"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
