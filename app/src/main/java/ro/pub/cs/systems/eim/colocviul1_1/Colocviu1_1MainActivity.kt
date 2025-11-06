@@ -1,5 +1,6 @@
 package ro.pub.cs.systems.eim.colocviul1_1
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -15,6 +16,7 @@ class Colocviu1_1MainActivity : AppCompatActivity() {
     private lateinit var directionsEditText: EditText
 
     private var directions = ""
+    private var numberOfClicks = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,13 @@ class Colocviu1_1MainActivity : AppCompatActivity() {
         eastButton.setOnClickListener { addDirection("EAST") }
         westButton.setOnClickListener { addDirection("WEST") }
 
+        navigateButton.setOnClickListener {
+            val intent = Intent(this, Colocviu1_1SecondaryActivity::class.java)
+            intent.putExtra("directions", directions)
+            intent.putExtra("clicks", numberOfClicks)
+            startActivity(intent)
+        }
+
     }
 
     private fun addDirection(direction: String) {
@@ -40,8 +49,13 @@ class Colocviu1_1MainActivity : AppCompatActivity() {
         } else {
             directions += " | $direction"
         }
+        numberOfClicks++
+
+        android.util.Log.d("Colocviu1_1", "Număr de butoane: $numberOfClicks")
+
         directionsEditText.setText(directions)
     }
+
 
     override fun onResume() {
         super.onResume()
