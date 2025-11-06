@@ -20,6 +20,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".Colocviu1_1SecondaryActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="ro.pub.cs.systems.eim.colocviul1_1.intent.action.Colocviu1_1SecondaryActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

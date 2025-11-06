@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class Colocviu1_1MainActivity : AppCompatActivity() {
@@ -18,6 +19,7 @@ class Colocviu1_1MainActivity : AppCompatActivity() {
 
     private var directions = ""
     private var numberOfClicks = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +48,7 @@ class Colocviu1_1MainActivity : AppCompatActivity() {
             val intent = Intent(this, Colocviu1_1SecondaryActivity::class.java)
             intent.putExtra("directions", directions)
             intent.putExtra("clicks", numberOfClicks)
-            startActivity(intent)
+            startActivityForResult(intent, 100)
         }
 
     }
@@ -84,5 +86,12 @@ class Colocviu1_1MainActivity : AppCompatActivity() {
         directionsEditText.setText(directions)
 
         android.util.Log.d("Colocviu1_1", "onRestoreInstanceState: $directions ($numberOfClicks clicks)")
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 100) {
+            val message = data?.getStringExtra("result") ?: "No result"
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        }
     }
 }
