@@ -45,6 +45,7 @@
 
     <EditText
         android:id="@+id/directions_edit_text"
+        android:saveEnabled="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="false"

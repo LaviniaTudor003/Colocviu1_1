@@ -2,6 +2,7 @@ package ro.pub.cs.systems.eim.colocviul1_1
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -34,6 +35,13 @@ class Colocviu1_1MainActivity : AppCompatActivity() {
         eastButton.setOnClickListener { addDirection("EAST") }
         westButton.setOnClickListener { addDirection("WEST") }
 
+        if (savedInstanceState != null) {
+            directions = savedInstanceState.getString("directions", "")
+            numberOfClicks = savedInstanceState.getInt("numberOfClicks", 0)
+            directionsEditText.setText(directions)
+            Log.d("Colocviu1_1", "Restored: $directions ($numberOfClicks clicks)")
+        }
+
         navigateButton.setOnClickListener {
             val intent = Intent(this, Colocviu1_1SecondaryActivity::class.java)
             intent.putExtra("directions", directions)
@@ -56,10 +64,25 @@ class Colocviu1_1MainActivity : AppCompatActivity() {
         directionsEditText.setText(directions)
     }
 
-
     override fun onResume() {
         super.onResume()
         directions = ""
         directionsEditText.setText("")
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("directions", directions)
+        outState.putInt("numberOfClicks", numberOfClicks)
+        android.util.Log.d("Colocviu1_1", "onSaveInstanceState: $directions ($numberOfClicks clicks)")
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        directions = savedInstanceState.getString("directions", "")
+        numberOfClicks = savedInstanceState.getInt("numberOfClicks", 0)
+        directionsEditText.setText(directions)
+
+        android.util.Log.d("Colocviu1_1", "onRestoreInstanceState: $directions ($numberOfClicks clicks)")
     }
 }
